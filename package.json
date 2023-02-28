@@ -1,0 +1,14 @@
+{
+  "name": "impact_oracle",
+  "version": "0.0.1",
+  "description": "Gives a confidence interval for if a value was generated as a result of an action.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ztable": "^1.0.7"
+  }
+}
