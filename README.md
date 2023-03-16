@@ -10,6 +10,7 @@ The impact is the measure (confidence interval) of an action's ability to alter 
 - high impact value means an action can significantly change the state
 - low impact value means an action insignificantly changes the state
 
+
 ## Notes
 
 What are the ways to increase or decrease confidence that an action changed some state?
@@ -18,5 +19,16 @@ we need to know the possible ...
 - states of the system,
 - actions that can be taken,
 - outcomes of those actions.
+
+## Usage
+Run Server
+```
+node server
+```
+
+Api query
+```
+http://localhost:8002/impact?action=0&before=1&after=0
+```
 
 ## Todo
