@@ -1,10 +1,3 @@
-// what are the ways to increase or decrease confidence that an action changed some state
-
-// we need to know the possible  ...
-// states of the system,
-// actions that can be taken,
-// outcomes of those actions.
-
 const zValue = require('ztable')
 
 /**
@@ -13,6 +6,8 @@ const zValue = require('ztable')
  * @param {*} stateBefore 
  * @param {*} stateAfter 
  * @param {*} levelOfConfidence 
+ * @idea make levelOfConfidence a function of the number of times the action has been taken
+ * @idea make levelOfConfidence a function of sentiment
  * @source https://www.investopedia.com/terms/c/confidenceinterval.asp
  */
 function impact_confidence(action, stateBefore, stateAfter, levelOfConfidence = 0.95) {
@@ -37,6 +32,21 @@ function impact_confidence(action, stateBefore, stateAfter, levelOfConfidence = 
   console.log(`Standard deviation: ${stdDev}`)
   console.log(`Confidence interval (${levelOfConfidence * 100}%): ${lowerBound} to ${upperBound}`)
   console.log("We are " + levelOfConfidence * 100 + "% confident that the impact of " + action + " on the state is between " + lowerBound + " and " + upperBound + ".")
+
+  return { lowerBound, upperBound }
 }
 
-module.exports = { impact_confidence }
+function calc_impact(state, action) {
+
+  // will return a float between 0 and 1
+  // 0 means no impact
+  // 1 means the action had a huge impact
+  // 0.5 means the action had a neutral impact
+  // 0.25 means the action had a small impact
+  // 0.75 means the action had a large impact
+  return { impact: Math.random(), confidence: impact_confidence(action, state.before, state.after) }
+  
+
+}
+
+module.exports = { impact_confidence, calc_impact }
